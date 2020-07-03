@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5">
+    <h1>Task</h1>
+    <div th:each="el : ${task}" class="alert alert-info mt-2">
+        <h3 th:text="${el.title}"/>
+        <strong>Type</strong><p th:text="${el.type}"/>
+        <strong>Priority</strong><p th:text="${el.priority}"/>
+        <strong>Автор кода </strong><p th:text="${el.authorName}"/>
+        <a th:href="'/blog/' + ${el.id}">Детальнее</a>
+    </div>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

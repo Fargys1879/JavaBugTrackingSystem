@@ -1,0 +1,17 @@
+<div th:fragment="header">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Java Bug Tracking System</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="/">Home</a>
+            <a class="p-2 text-dark" href="/task">Tasks</a>
+            <a class="p-2 text-dark" href="/task/add">Add New Task</a>
+            <a class="p-2 text-dark" href="/projects">Projects</a>
+            <a class="p-2 text-dark" href="/users">Users</a>
+        </nav>
+        <a class="btn btn-outline-primary" href="/login">Sign up</a>
+        <h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h3>
+        <form th:action="@{/logout}" class="btn btn-outline-primary" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+</div>
