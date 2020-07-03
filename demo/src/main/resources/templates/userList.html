@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+List of Users
+<body>
+<div th:each="el : ${users}" class="alert alert-info mt-2">
+    <strong>Username</strong><p th:text="${el.username}"/>
+   <!-- <strong>List of Users</strong><nav th:each=" el1 : ${el.roles}">
+   <a th:text="${el1.role}"></a></nav>-->
+    <strong>Edit User</strong><a href="/user/${user.id}">Edit</a>
+</div>
+
+</body>
+</table>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
