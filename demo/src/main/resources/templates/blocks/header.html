@@ -8,9 +8,11 @@
             <a class="p-2 text-dark" href="/projects">Projects</a>
             <a class="p-2 text-dark" href="/user">Users</a>
         </nav>
-        <a class="btn btn-outline-primary" href="/login">Sign up</a>
-        <h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h3>
-        <form th:action="@{/logout}" class="btn btn-outline-primary" method="post">
+        <form th:action="@{/login}"  method="get">
+            <input type="submit" value="Sign In"/>
+        </form>
+        <h3 th:inline="text"> Hello [[${#httpServletRequest.remoteUser}]]! </h3>
+        <form th:action="@{/logout}"  method="post">
             <input type="submit" value="Sign Out"/>
         </form>
     </div>
