@@ -9,7 +9,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, full_text, type;
+    private String title, description, type, project;
     private int priority;
     //private boolean progress;
 
@@ -33,12 +33,20 @@ public class Task {
         this.title = title;
     }
 
-    public String getFull_text() {
-        return full_text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setFull_text(String full_text) {
-        this.full_text = full_text;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
     }
 
     public String getType() {
@@ -76,13 +84,13 @@ public class Task {
     public Task() {
     }
 
-    public Task( String title, String full_text, String type, int priority,User author) {
+    public Task( String title, String description, String type, String project, int priority,User author) {
 
         this.title = title;
-        this.full_text = full_text;
+        this.description = description;
         this.type = type;
         this.priority = priority;
-        //this.progress = progress;
+        this.project = project;
         this.author = author;
     }
 

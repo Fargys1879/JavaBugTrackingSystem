@@ -1,22 +1,24 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${title}"/>
+    <title th:text="${task}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
-    <h1>Редактирование статьи</h1>
-    <form method="post">
-        <div th:each="el : ${task}">
-            <input type="text" th:value="${el.title}" name="title" placeholder="Введите Название Статьи" class="form-control"><br>
-            <input type="text" th:value="${el.type}" name="anons" placeholder="Введите анонс Статьи" class="form-control"><br>
-            <textarea name="full_text" placeholder="Введите полный текст Статьи" class="form-control" th:text="${el.full_text}" /><br>
-            <button type="submit" class="btn btn-success">Редактировать статью</button>
-         </div>
+    <h1>Task Edit</h1>
+    <div th:each="el : ${task}">
+    <form th:action="'/task/' + ${el.id} + '/edit'"  method="post">
+
+            <input type="text" th:value="${el.title}" name="title" placeholder="Put new Task Title" class="form-control"><br>
+            <input type="text" th:value="${el.type}" name="type" placeholder="Put new Task Type" class="form-control"><br>
+            <textarea th:text="${el.description}" name="description" placeholder="Put new Description" class="form-control" /><br>
+
+            <button type="submit" class="btn btn-success">Save</button>
     </form>
+    </div>
 </div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>

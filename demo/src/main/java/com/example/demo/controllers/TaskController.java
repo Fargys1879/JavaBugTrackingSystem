@@ -34,12 +34,13 @@ public class TaskController {
     @PostMapping("/task/add")
     public String blogPostAdd(@RequestParam String title,
                               @RequestParam String type,
-                              @RequestParam String full_text,
+                              @RequestParam String description,
+                              @RequestParam String project,
                               //@RequestParam boolean progress,
                               @RequestParam int priority,
                               @AuthenticationPrincipal User author,
                               Model model) {
-        Task task = new Task(title, full_text, type, priority,author );
+        Task task = new Task(title, description, project, type, priority, author );
         taskRepository.save(task);
         return  "redirect:/task";
 
@@ -72,15 +73,17 @@ public class TaskController {
     }
 
     @PostMapping("/task/{id}/edit")
-    public String blogPostUpdate(@RequestParam String title,
+    public String blogPostUpdate(
                                  @PathVariable(value = "id") Long id,
+                                 @RequestParam String title,
                                  @RequestParam String type,
-                                 @RequestParam String full_text,
+                                 @RequestParam String description,
+                                 //@RequestParam boolean progress,
                                  Model model) {
         Task task = taskRepository.findById(id).orElseThrow();
         task.setTitle(title);
         task.setType(type);
-        task.setFull_text(full_text);
+        task.setDescription(description);
         taskRepository.save(task);
         return  "redirect:/task";
 
