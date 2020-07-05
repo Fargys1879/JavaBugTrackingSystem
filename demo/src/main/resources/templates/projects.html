@@ -11,6 +11,7 @@
     <h1>Projects</h1>
     <div th:each="el : ${project}" class="alert alert-info mt-2">
         <h3 th:text="${el.project_name}"/>
+        <a th:href="'/task/' + ${el.id}">Details</a>
 
     </div>
 </div>

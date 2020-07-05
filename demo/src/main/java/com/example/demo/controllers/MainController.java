@@ -63,7 +63,7 @@ public class MainController {
         projectRepository.save(project);
         //projectRepository.save(pro1);
 
-        return  "redirect:/project";
+        return  "redirect:/projects";
     }
 
 }
