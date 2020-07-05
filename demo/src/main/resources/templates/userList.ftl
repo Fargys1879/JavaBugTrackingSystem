@@ -7,7 +7,7 @@ List of Users
         <tr>
             <th><strong>Username</strong></th>
             <th><strong>Role</strong></th>
-            <th>Edit User Role</th>
+            <th>User Tasks</th>
         </tr>
     </thead>
     <tbody>
@@ -15,8 +15,8 @@ List of Users
         <tr >
             <td>${user.username}</td>
             <td><#list user.roles as role>${role}<#sep>, </#list></td>
-            <td><#list user.tasks as task>${task}<#sep>, </#list></td>
-            <td><a href="/user/${user.id}">Edit</a></td>
+
+
         </tr>
     </#list>
     </tbody>
