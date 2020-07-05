@@ -9,10 +9,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -26,7 +29,7 @@ public class MainController {
     }
 
     @GetMapping("/projects")
-    public String projectMain( Model model) {
+    public String projectMain(Model model) {
         Iterable<Project> project = projectRepository.findAll();
         model.addAttribute("project", project);
         return "projects";
@@ -34,36 +37,50 @@ public class MainController {
     }
 
     @GetMapping("/project/add")
-    public String projectAdd( Model model) {
+    public String projectAdd(Model model) {
 
         return "project-add";
 
     }
 
     @PostMapping("/project/add")
-    public String projectPostAdd( @RequestParam String project_name,
-                                  @RequestParam String title,
-                                  @RequestParam String description,
-                                  @RequestParam String type,
-                                  @RequestParam int priority,
-                                  @AuthenticationPrincipal User author,
-            Model model) {
-        Project project = new Project(project_name );
+    public String projectPostAdd(@RequestParam String project_name,
+                                 @RequestParam String title,
+                                 @RequestParam String description,
+                                 @RequestParam String type,
+                                 @RequestParam int priority,
+                                 @AuthenticationPrincipal User author,
+                                 Model model) {
+        Project project = new Project(project_name);
         Task task = new Task(title, description, type, priority, author);
-        //Project pro1 = new Project("new_pro1");
-
-        //Task task2 = new Task("fg1","gf1","type1",1,author);
-        //Task task3 = new Task("fg2","gf2","type2",1,author);
-        //Task task4 = new Task("fg2","gf2","type2",1,author);
-
         project.setTasks(Arrays.asList(task));
 
-        //pro1.setTasks(Arrays.asList(task3));
-
         projectRepository.save(project);
-        //projectRepository.save(pro1);
 
-        return  "redirect:/projects";
+        return "redirect:/projects";
     }
 
+    @GetMapping("/project/{id}")
+    public String projectDetails(@PathVariable(value = "id") Long id, Model model) {
+        if (!projectRepository.existsById(id)) {
+            return "redirect:/task";
+        }
+        Optional<Project> proj = projectRepository.findById(id);
+        ArrayList<Project> res = new ArrayList<>();
+        proj.ifPresent(res::add);
+        model.addAttribute("project", res);
+        return "project-details";
+
+    }
+
+    @PostMapping("/project/{id}/remove")
+    public String projectPostRemove(@PathVariable(value = "id") Long id,
+                                 Model model) {
+        Project proj = projectRepository.findById(id).orElseThrow();
+        projectRepository.delete(proj);
+        return "redirect:/projects";
+
+    }
 }
+
+

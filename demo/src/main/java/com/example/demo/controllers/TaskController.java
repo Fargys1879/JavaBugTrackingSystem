@@ -35,7 +35,7 @@ public class TaskController {
 
 
     @GetMapping("/task/{id}")
-    public String blogDetails(@PathVariable(value = "id") Long id, Model model) {
+    public String taskDetails(@PathVariable(value = "id") Long id, Model model) {
         if(!taskRepository.existsById(id)) {
             return "redirect:/task";
         }
