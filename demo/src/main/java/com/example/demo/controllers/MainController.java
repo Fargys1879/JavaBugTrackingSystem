@@ -4,6 +4,7 @@ import com.example.demo.models.Project;
 import com.example.demo.models.Task;
 import com.example.demo.models.User;
 import com.example.demo.repo.ProjectRepository;
+import com.example.demo.repo.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import java.util.Optional;
 public class MainController {
     @Autowired
     private ProjectRepository projectRepository;
+    private TaskRepository taskRepository;
 
     @GetMapping("/")
     public String home(@AuthenticationPrincipal User user, Model model) {
@@ -61,7 +63,7 @@ public class MainController {
     }
 
     @GetMapping("/project/{id}")
-    public String projectDetails(@PathVariable(value = "id") Long id, Model model) {
+    public String projectDetails(@PathVariable(value = "id") Long id,  Model model) {
         if (!projectRepository.existsById(id)) {
             return "redirect:/task";
         }
@@ -69,6 +71,8 @@ public class MainController {
         ArrayList<Project> res = new ArrayList<>();
         proj.ifPresent(res::add);
         model.addAttribute("project", res);
+
+
         return "project-details";
 
     }

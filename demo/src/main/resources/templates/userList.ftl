@@ -15,6 +15,7 @@ List of Users
         <tr >
             <td>${user.username}</td>
             <td><#list user.roles as role>${role}<#sep>, </#list></td>
+            <td><#list user.tasks as task>${task}<#sep>, </#list></td>
             <td><a href="/user/${user.id}">Edit</a></td>
         </tr>
     </#list>
