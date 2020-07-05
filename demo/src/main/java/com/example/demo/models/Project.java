@@ -11,12 +11,9 @@ public class Project {
     private Long id;
     private String project_name;
 
-    //@OneToOne(mappedBy = "proj", cascade = CascadeType.ALL)
-    //private Task task;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "project_id")
     private List<Task> tasks;
-
 
     public Project() {
     }
