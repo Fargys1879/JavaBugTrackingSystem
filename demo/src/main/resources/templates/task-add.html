@@ -11,8 +11,9 @@
     <h1>Add a new Task</h1>
    <form th:action="@{/task/add}" method="post">
        <input type="text" name="title" placeholder="Title of Task" class="form-control"><br>
-       <input type="text" name="type" placeholder="Type of Task" class="form-control"><br>
-       <input type="text" name="project" placeholder="Project of Task" class="form-control"><br>
+
+       <input type="text" name="project_name" placeholder="Project" class="form-control"><br>
+       <input type="text" name="type" placeholder="Project of Task" class="form-control"><br>
        <input type="number" name="priority" placeholder="Priority" class="form-control"><br>
        <textarea name="description" placeholder="Input description of task" class="form-control"></textarea><br>
        <button type="submit" class="btn btn-success">Add new Task</button>

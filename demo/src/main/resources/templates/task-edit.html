@@ -13,7 +13,7 @@
     <form th:action="'/task/' + ${el.id} + '/edit'"  method="post">
 
             <input type="text" th:value="${el.title}" name="title" placeholder="${el.title}" class="form-control"><br>
-            <input type="text" th:value="${el.project}" name="project" placeholder="${el.project}" class="form-control"><br>
+
             <input type="text" th:value="${el.type}" name="type" placeholder="${el.type}" class="form-control"><br>
             <input type="number" th:value="${el.priority}" name="priority" placeholder="${el.priority}" class="form-control"><br>
             <textarea th:text="${el.description}" name="description" placeholder="${el.description}" class="form-control" /><br>

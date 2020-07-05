@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Task {
@@ -9,11 +10,16 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, description, type, project;
+    private String title, description, type;
     private int priority;
-    //private boolean progress;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+   // @ManyToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "project_id")
+    //private Project proj;
+
+
+
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
 
@@ -41,13 +47,7 @@ public class Task {
         this.description = description;
     }
 
-    public String getProject() {
-        return project;
-    }
 
-    public void setProject(String project) {
-        this.project = project;
-    }
 
     public String getType() {
         return type;
@@ -65,13 +65,8 @@ public class Task {
         this.priority = priority;
     }
 
-    //public boolean isProgress() {
-    //    return progress;
-    //}
 
-    //public void setProgress(boolean progress) {
-    //    this.progress = progress;
-    //}
+
 
     public User getAuthor() {
         return author;
@@ -84,14 +79,26 @@ public class Task {
     public Task() {
     }
 
-    public Task( String title, String description, String type, String project, int priority,User author) {
+    public Task(  String title, String description, String type, int priority,User author) {
 
         this.title = title;
         this.description = description;
         this.type = type;
         this.priority = priority;
-        this.project = project;
+
         this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "\nTask{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", priority=" + priority +
+                ", author=" + author +
+                '}';
     }
 
     public String getAuthorName() {

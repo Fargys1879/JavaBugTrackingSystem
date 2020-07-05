@@ -12,7 +12,7 @@
     <div th:each="el : ${task}" class="alert alert-info mt-2">
         <h3 th:text="${el.title}"/>
         <strong>Type of Task: </strong><a th:text="${el.type}"/><br>
-        <strong>Project of Task: </strong><a th:text="${el.project}"/><br>
+
         <strong>Rriority of Task: </strong><a th:text="${el.priority}"/><br>
         <strong>Author of Task: </strong><a th:text="${el.authorName}"/><br>
         <strong>Description: </strong><textarea th:placeholder="${el.description}" class="form-control"></textarea><br>
