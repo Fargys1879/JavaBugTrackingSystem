@@ -21,7 +21,7 @@ import java.util.Optional;
 public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
-    
+
 
     @GetMapping("/task")
     public String taskMain( @AuthenticationPrincipal User user, Model model) {
@@ -32,41 +32,7 @@ public class TaskController {
     }
 
 
-    @GetMapping("/task/add")
-    public String taskAdd( @AuthenticationPrincipal User user, Model model) {
-        return  "task-add";
 
-    }
-
-    @PostMapping("/task/add")
-    public String blogPostAdd(
-
-            @RequestParam String title,
-            @RequestParam String description,
-            @RequestParam String type,
-            @RequestParam int priority,
-            @AuthenticationPrincipal User author,
-                              Model model) {
-
-        Task task = new Task(title, description, type, priority, author);
-        //Task task = new Task(title, description, type, project, priority, author );
-        //Task task1 = new Task("fg","gf","type","project",1,author);
-
-        //Project pro = new Project("new_pro");
-        //Project pro1 = new Project("new_pro1");
-
-        //Task task2 = new Task("fg1","gf1","type1",1,author);
-        //Task task3 = new Task("fg2","gf2","type2",1,author);
-        //Task task4 = new Task("fg2","gf2","type2",1,author);
-
-        //pro.setTasks(Arrays.asList(task2));
-        //pro1.setTasks(Arrays.asList(task3));
-
-        taskRepository.save(task);
-        //projectRepository.save(pro1);
-        return  "redirect:/task";
-
-    }
 
     @GetMapping("/task/{id}")
     public String blogDetails(@PathVariable(value = "id") Long id, Model model) {

@@ -46,22 +46,20 @@ public class MainController {
                                   @RequestParam int priority,
                                   @AuthenticationPrincipal User author,
             Model model) {
-        //Project project = new Project(project_name );
-        //Task task = new Task(title, description, type, priority, author);
-        Project pro1 = new Project("new_pro1");
+        Project project = new Project(project_name );
+        Task task = new Task(title, description, type, priority, author);
+        //Project pro1 = new Project("new_pro1");
 
-        Task task2 = new Task("fg1","gf1","type1",1,author);
-        Task task3 = new Task("fg2","gf2","type2",1,author);
+        //Task task2 = new Task("fg1","gf1","type1",1,author);
+        //Task task3 = new Task("fg2","gf2","type2",1,author);
         //Task task4 = new Task("fg2","gf2","type2",1,author);
 
-        //project.setTasks(Arrays.asList(task));
+        project.setTasks(Arrays.asList(task));
 
-        pro1.setTasks(Arrays.asList(task3));
+        //pro1.setTasks(Arrays.asList(task3));
 
-        //projectRepository.save(project);
-        projectRepository.save(pro1);
-
-        //projectRepository.save(project);
+        projectRepository.save(project);
+        //projectRepository.save(pro1);
 
         return  "redirect:/project";
     }
