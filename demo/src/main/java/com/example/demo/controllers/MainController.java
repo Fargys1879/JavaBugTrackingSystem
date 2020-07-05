@@ -25,8 +25,10 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/project")
+    @GetMapping("/projects")
     public String projectMain( Model model) {
+        Iterable<Project> project = projectRepository.findAll();
+        model.addAttribute("project", project);
         return "projects";
 
     }

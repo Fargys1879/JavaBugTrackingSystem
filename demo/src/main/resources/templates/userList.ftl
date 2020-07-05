@@ -19,5 +19,6 @@ List of Users
         </tr>
     </#list>
     </tbody>
+    <a href="/">Back to Home</a>
 </table>
 </@c.page>

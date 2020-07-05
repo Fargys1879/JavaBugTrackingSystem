@@ -15,4 +15,5 @@ Edit of User
     <input type="hidden" value="${_csrf.token}" name="csrf">
     <button type="submit">Save</button>
 </form>
+<a href="/">Back to Home</a>
 </@c.page>
