@@ -22,6 +22,7 @@ import java.util.Optional;
 public class MainController {
     @Autowired
     private ProjectRepository projectRepository;
+    @Autowired
     private TaskRepository taskRepository;
 
     @GetMapping("/")
