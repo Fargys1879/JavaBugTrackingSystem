@@ -20,7 +20,6 @@ public class UserController {
     @GetMapping("/user")
     public String userList(Model model) {
         Iterable<User> users = userRepo.findAll();
-
         model.addAttribute("users", users);
         return "userList";
     }
