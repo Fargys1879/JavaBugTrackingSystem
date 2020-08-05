@@ -12,7 +12,7 @@ public class Task {
 
     private String title, description, type;
     private int priority;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY )
     private Project project;
 
     @OneToOne(fetch = FetchType.EAGER)

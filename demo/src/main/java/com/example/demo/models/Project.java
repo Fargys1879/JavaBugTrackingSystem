@@ -12,7 +12,7 @@ public class Project {
     private Long id;
     private String project_name;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Collection<Task> tasks;
 
     public Project() {

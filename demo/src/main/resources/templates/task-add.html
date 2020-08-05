@@ -9,8 +9,17 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <h1>Add a new Task</h1>
-   <form th:action="@{/task/add}" method="post">
-       <input type="text" name="title" placeholder="Title of Task" class="form-control"><br>
+   <form th:action="@{/task/add}" method="post" class="needs-validation">
+       <label for="validationCustom01">First name</label>
+       <input type="text" class="form-control" id="validationCustom01" value="" required>
+       <div class="valid-feedback">
+           Looks good!
+       </div>
+       <label for="validationCustom02">Title of Task</label>
+       <input type="text" name="title" class="form-control" id="validationCustom02" value="" required><br>
+       <div class="valid-feedback">
+           Looks good!
+       </div>
        <select class="form-control" id="project" name="projectString"  >
            <option th:each="project : ${projects}"
                    th:value="${project}"
