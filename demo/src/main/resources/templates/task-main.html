@@ -9,14 +9,28 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5">
     <h1>Tasks</h1>
-    <div th:each="el : ${task}" class="alert alert-info mt-2">
-        <h3 th:text="${el.title}"/>
-        <strong>Type</strong><p th:text="${el.type}"/>
-        <strong>Priority</strong><p th:text="${el.priority}"/>
-
-        <strong>Author of Task </strong><p th:text="${el.authorName}"/>
-        <a th:href="'/task/' + ${el.id}">Details</a>
-    </div>
+    <table class="table" align="center">
+        <thead class="thead-dark" align="center">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Task</th>
+            <th scope="col">Type</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Author</th>
+            <th scope="col">Details</th>
+        </tr>
+        </thead>
+        <tbody align="center">
+        <tr th:each="el : ${task}">
+            <td th:text="${el.id}"/>
+            <td th:text="${el.title}"/>
+            <td th:text="${el.type}"/>
+            <td th:text="${el.priority}"/>
+            <td th:text="${el.authorName}"/>
+            <td><a th:href="'/task/' + ${el.id}" class="btn btn-warning">Details</a><br><br></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>
