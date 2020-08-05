@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -11,9 +12,8 @@ public class Project {
     private Long id;
     private String project_name;
 
-    //@OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "project_id")
-    //private List<Task> tasks;
+    @OneToMany(mappedBy = "project")
+    private Collection<Task> tasks;
 
     public Project() {
     }
@@ -23,6 +23,13 @@ public class Project {
 
     }
 
+    public Collection<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Collection<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public Long getId() {
         return id;
