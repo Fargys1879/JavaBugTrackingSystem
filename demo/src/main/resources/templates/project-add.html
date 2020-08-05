@@ -10,16 +10,12 @@
 <div class="container mt-5 mb-5">
     <h1>Add a new Project and Task</h1>
     <form th:action="@{/project/add}" method="post">
-        <input type="text" name="title" placeholder="Title of Task" class="form-control"><br>
-
         <input type="text" name="project_name" placeholder="Project" class="form-control"><br>
-        <input type="text" name="type" placeholder="Type of Task" class="form-control"><br>
-        <input type="number" name="priority" placeholder="Priority" class="form-control"><br>
-        <textarea name="description" placeholder="Input description of task" class="form-control"></textarea><br>
+        <textarea name="description" placeholder="Input description of project" class="form-control"></textarea><br>
 
 
 
-        <button type="submit" class="btn btn-success">Add new Task</button>
+        <button type="submit" class="btn btn-success">Add new Project</button>
     </form>
 </div>
 <div th:insert="blocks/footer :: footer"></div>

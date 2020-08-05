@@ -12,12 +12,8 @@ public class Task {
 
     private String title, description, type;
     private int priority;
-
-   // @ManyToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "project_id")
-    //private Project proj;
-
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Project project;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -79,13 +75,13 @@ public class Task {
     public Task() {
     }
 
-    public Task(  String title, String description, String type, int priority,User author) {
 
+    public Task(String title, String description, String type, int priority, Project project, User author) {
         this.title = title;
         this.description = description;
         this.type = type;
         this.priority = priority;
-
+        this.project = project;
         this.author = author;
     }
 
@@ -105,5 +101,11 @@ public class Task {
         return  author != null ? author.getUsername() : "<none>";
     }
 
+    public Project getProject() {
+        return project;
+    }
 
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }

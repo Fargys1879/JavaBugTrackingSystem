@@ -11,9 +11,9 @@ public class Project {
     private Long id;
     private String project_name;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_id")
-    private List<Task> tasks;
+    //@OneToMany(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "project_id")
+    //private List<Task> tasks;
 
     public Project() {
     }
@@ -40,20 +40,5 @@ public class Project {
         this.project_name = project_name;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
-    @Override
-    public String toString() {
-        return "\nProject{" +
-                "id=" + id +
-                ", project_name='" + project_name + '\'' +
-                ", task=" + tasks +
-                '}';
-    }
 }

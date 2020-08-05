@@ -48,16 +48,8 @@ public class MainController {
 
     @PostMapping("/project/add")
     public String projectPostAdd(@RequestParam String project_name,
-                                 @RequestParam String title,
-                                 @RequestParam String description,
-                                 @RequestParam String type,
-                                 @RequestParam int priority,
-                                 @AuthenticationPrincipal User author,
                                  Model model) {
         Project project = new Project(project_name);
-        Task task = new Task(title, description, type, priority, author);
-        project.setTasks(Arrays.asList(task));
-
         projectRepository.save(project);
 
         return "redirect:/projects";
