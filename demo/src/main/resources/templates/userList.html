@@ -9,15 +9,15 @@
 <header th:insert="blocks/header :: header"></header>
 <main role="main">
 
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table" align="center">
+        <thead class="thead-dark" align="center">
         <tr>
             <th scope="col">id</th>
             <th scope="col">Username</th>
             <th scope="col">User Edit</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody align="center">
         <tr th:each="el : ${users}">
             <td th:text="${el.id}"/>
             <td th:text="${el.username}"/>

@@ -19,7 +19,11 @@
                     th:text="${el}">Wireframe</option>
         </select>
 
-    <button type="submit">Save</button>
+    <button type="submit" class="btn btn-warning">Save</button><br>
+    </form>
+    <span></span>
+    <form th:action="'/user/' + ${el.id} + '/delete'" method="post">
+        <button type="submit" class="btn btn-warning">Delete User</button><br><br>
     </form>
     <a href="/">Back to Home</a>
 </div>

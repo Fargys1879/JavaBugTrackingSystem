@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}/edit")
-    public String userEditForm( @PathVariable(value = "id") Long id,  Model model) {
+    public String userEdit( @PathVariable(value = "id") Long id,  Model model) {
         if(!userRepo.existsById(id)) {
             return "redirect:/user";
         }
@@ -42,10 +42,27 @@ public class UserController {
     @PostMapping("/user/{id}/edit")
     public String userSave(@RequestParam String userName,
                            @RequestParam String userPassword,
+                           @RequestParam String role,
                            @PathVariable(value = "id") User user,Model model) {
         user.setUsername(userName);
         user.setPassword(userPassword);
+        Set<String> roles = Arrays.stream(Role.values())
+                .map(Role :: name)
+                .collect(Collectors.toSet());
+        user.getRoles().clear();
+        for (String key : roles) {
+            if (key.contains(role)) {
+                user.getRoles().add(Role.valueOf(key));
+            }
+        }
         userRepo.save(user);
+
+        return "redirect:/user";
+    }
+    @PostMapping("/user/{id}/delete")
+    public String userDelete(@PathVariable(value = "id") Long id,Model model) {
+        User user = userRepo.findById(id).orElseThrow();
+        userRepo.delete(user);
         return "redirect:/user";
     }
 }

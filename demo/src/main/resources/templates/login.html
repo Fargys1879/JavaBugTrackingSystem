@@ -7,15 +7,17 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<div class="container mt-5">
+<div class="container mt-5" align="center">
     <div class="alert alert-info mt-2">
     <form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="username" class="form-control"/> </label></div>
-    <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
+        <div><label> User Name : <input type="text" name="username" class="form-control"/> </label></div>
+        <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
     </div>
 </div>
+<div align="center">
 <a href="/registration">Add New User</a>
+</div>
 </body>
 </html>
