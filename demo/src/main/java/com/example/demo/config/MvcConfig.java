@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * Класс MvcConfig
  * метод addViewController переопределяет метод с тем же именем в WebMvcConfigurer
- *
+ * @author Evgeny Shabalin
  */
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {

@@ -16,9 +16,11 @@ import java.util.*;
 
 /**
  * Класс TaskController назначен для отображения страниц с задачами.
+ * @Controller привязывает класс к Spring Boot stereotype
  * @RequestParam привязывает значение имени параметра строки запроса к параметру имени
  * метода отображения(ответа).
  * @AuthenticationPrincipal берет значение User авторизованного пользователя для передачи его параметров.
+ * @author Evgeny Shabalin
  */
 
 @Controller

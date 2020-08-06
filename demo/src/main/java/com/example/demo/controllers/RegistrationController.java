@@ -14,6 +14,8 @@ import java.util.Map;
 /**
  * Класс RegistrationController назначен для логики отображений страниц
  * для регистрации/авторизации новых пользователей
+ * @Controller привязывает класс к Spring Boot stereotype
+ * @author Evgeny Shabalin
  */
 
 @Controller
@@ -26,6 +28,12 @@ public class RegistrationController {
         return "registration";
     }
 
+    /**
+     * Метод для регистрации нового пользователя
+     * @param user обьект класса User который будет зарегистрирован
+     * @param model Map для отображения уже существующего User
+     * @return
+     */
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model ) {
         User UserFromDB = userRepo.findByUsername(user.getUsername());

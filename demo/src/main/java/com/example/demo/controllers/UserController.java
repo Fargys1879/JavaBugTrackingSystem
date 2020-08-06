@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 /**
  * Класс UserController назначен для логики манипуляции параметров пользователей.
+ * @Controller привязывает класс к Spring Boot stereotype
+ * @author Evgeny Shabalin
  */
 
 @Controller

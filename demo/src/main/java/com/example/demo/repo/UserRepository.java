@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Предназначен для того что бы реализовать связь Класса-сущности User
  * с Базой Данных
  * findByUsername(String username) метод реализации поиска User по String username
+ * @author Evgeny Shabalin
  */
 
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
  * @Override
  * public UserDetails loadUserByUsername(String username) переопределение данного метода
  * для поска User по username в репозитории.
+ * @author Evgeny Shabalin
  */
 
 @Service

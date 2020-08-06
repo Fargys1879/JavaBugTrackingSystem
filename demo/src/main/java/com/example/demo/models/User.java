@@ -16,6 +16,7 @@ import java.util.Set;
  * (класс, аннотированный с помощью @Enumerated).
  * @OneToOne(fetch = FetchType.EAGER) устанавливает связь с классом-сущностью User
  * @JoinColumn(name = "user_id") именует переменную с которой устанавливается связь в таблице БД.
+ * @author Evgeny Shabalin
  */
 
 @Entity

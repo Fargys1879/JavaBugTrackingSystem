@@ -8,6 +8,7 @@ import javax.persistence.*;
  * @ManyToOne(fetch = FetchType.LAZY ) устанавливает связь с классом-сущностью Project
  * @OneToOne(fetch = FetchType.EAGER) устанавливает связь с классом-сущностью User
  * @JoinColumn(name = "user_id") именует переменную с которой устанавливается связь в таблице БД.
+ * @author Evgeny Shabalin
  */
 
 @Entity

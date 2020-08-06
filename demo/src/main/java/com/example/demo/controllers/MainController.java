@@ -18,8 +18,10 @@ import java.util.Optional;
 
 /**
  * Класс MainController назначен для отображения главной страницы и страниц с проектами
+ * @Controller привязывает класс к Spring Boot stereotype
  * @RequestParam привязывает значение имени параметра строки запроса к параметру имени
  * метода отображения(ответа).
+ * @author Evgeny Shabalin
  */
 
 @Controller
@@ -29,8 +31,13 @@ public class MainController {
     @Autowired
     private TaskRepository taskRepository;
 
+    /**
+     *Метод для загрузки главной страницы
+     * @param model переменная для передачи атрибутов для шаблонизатора.
+     * @return возвразает название html документа отображаемого браузером.
+     */
     @GetMapping("/")
-    public String home(@AuthenticationPrincipal User user, Model model) {
+    public String home(Model model) {
         model.addAttribute("title", "Main page");
         return "home";
     }

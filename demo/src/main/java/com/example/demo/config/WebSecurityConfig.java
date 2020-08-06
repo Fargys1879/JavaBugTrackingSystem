@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
  * @EnableWebSecurity, чтобы включить поддержку веб-безопасности Spring Security
  * и обеспечить интеграцию Spring MVC. Он также расширяет WebSecurityConfigurerAdapter
  * и переопределяет несколько его методов, чтобы установить некоторые особенности конфигурации веб-безопасности.
- *
+ * @author Evgeny Shabalin
  */
 
 @Configuration

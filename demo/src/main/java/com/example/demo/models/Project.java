@@ -10,7 +10,7 @@ import java.util.Collection;
  * @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL) устанавливает связь
  * между сущностями с использованием "ленивой" загрузки связанных обьектов из БД, а так же устанавливает
  * каскадную связь между сущностями(если данный обьект будет удален и т.д. связанный с ним обьект тоже потерпит изменение)
- *
+ * @author Evgeny Shabalin
  */
 
 @Entity

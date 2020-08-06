@@ -4,7 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 /**
  * Enum-сущность назначен для состояния роли пользователя.
- *
+ * @author Evgeny Shabalin
  */
 
 public enum  Role implements GrantedAuthority {
