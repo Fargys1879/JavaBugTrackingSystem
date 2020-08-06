@@ -5,6 +5,7 @@ import com.example.demo.models.Task;
 import com.example.demo.models.User;
 import com.example.demo.repo.ProjectRepository;
 import com.example.demo.repo.TaskRepository;
+import com.example.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class TaskController {
     private TaskRepository taskRepository;
     @Autowired
     private ProjectRepository projectRepository;
+    @Autowired
+    private UserRepository userRepository;
     /////////////Map for (id ---> project_name)////////////////////
     private static Map<Long,String> projectsMap = new HashMap<>();
 
@@ -32,7 +35,9 @@ public class TaskController {
     }
     @GetMapping("/task/add")
     public String taskAddGET( Model model) {
+        //////////////Set projectString for Project Choice form//////////
         Set<String> projectsString = new HashSet<>();
+        //////////////Set projectString for Project Choice form//////////
         Iterable<Project> projects = projectRepository.findAll();
         Iterator<Project> projectIterator = projects.iterator();
         while (projectIterator.hasNext()) {
@@ -42,6 +47,17 @@ public class TaskController {
             projectsMap.put(id,name);
             projectsString.add(name);
         }
+        //////////////Set userString for User Choice form//////////
+        Set<String> userString = new HashSet<>();
+        //////////////Set userString for User Choice form//////////
+        List<User> users = userRepository.findAll();
+        Iterator<User> userIterator = users.iterator();
+        while (userIterator.hasNext()) {
+            User user = userIterator.next();
+            String username = user.getUsername();
+            userString.add(username);
+        }
+        model.addAttribute("users", userString);
         model.addAttribute("projects", projectsString);
         return  "task-add";
 

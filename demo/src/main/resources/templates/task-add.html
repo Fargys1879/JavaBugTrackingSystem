@@ -10,25 +10,43 @@
 <div class="container mt-5 mb-5">
     <h1>Add a new Task</h1>
    <form th:action="@{/task/add}" method="post" class="needs-validation">
-       <label for="validationCustom01">First name</label>
-       <input type="text" class="form-control" id="validationCustom01" value="" required>
+       <label for="validationCustom01">Title of Task</label>
+       <input type="text" name="title" class="form-control" id="validationCustom01" value="" required><br>
        <div class="valid-feedback">
            Looks good!
        </div>
-       <label for="validationCustom02">Title of Task</label>
-       <input type="text" name="title" class="form-control" id="validationCustom02" value="" required><br>
+       <label for="validationCustom02">Author of Task</label>
+       <select class="form-control" id="validationCustom02" name="userString"  >
+           <option th:each="user : ${users}"
+                   th:value="${user}" required
+                   th:text="${user}">Wireframe
+           </option>
+       </select><br>
        <div class="valid-feedback">
            Looks good!
        </div>
-       <select class="form-control" id="project" name="projectString"  >
+       <label for="validationCustom03">Project</label>
+       <select class="form-control" id="validationCustom03" name="projectString"  >
            <option th:each="project : ${projects}"
                    th:value="${project}"
                    th:text="${project}">Wireframe
            </option>
        </select><br>
-       <input type="text" name="type" placeholder="Type of Task" class="form-control"><br>
-       <input type="number" name="priority" placeholder="Priority" class="form-control"><br>
-       <textarea name="description" placeholder="Description of task" class="form-control"></textarea><br>
+       <label for="validationCustom04">Type of Task</label>
+       <input type="text" name="type" id="validationCustom04"  value="" required class="form-control"><br>
+       <div class="valid-feedback">
+           Looks good!
+       </div>
+       <label for="validationCustom05">Priority</label>
+       <input type="number" name="priority"  id="validationCustom05" value="" required class="form-control"><br>
+       <div class="valid-feedback">
+           Looks good!
+       </div>
+       <label for="validationCustom06">Description</label>
+       <textarea name="description" id="validationCustom06"  value="" required class="form-control"></textarea><br>
+       <div class="valid-feedback">
+           Looks good!
+       </div>
        <button type="submit" class="btn btn-success">Add new Task</button>
    </form>
 </div>
