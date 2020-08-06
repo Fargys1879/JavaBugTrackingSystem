@@ -48,8 +48,9 @@ public class MainController {
 
     @PostMapping("/project/add")
     public String projectPostAdd(@RequestParam String project_name,
+                                 @RequestParam String description,
                                  Model model) {
-        Project project = new Project(project_name);
+        Project project = new Project(project_name, description);
         projectRepository.save(project);
 
         return "redirect:/projects";

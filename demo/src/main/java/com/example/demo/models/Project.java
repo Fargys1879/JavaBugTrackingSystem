@@ -11,6 +11,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String project_name;
+    private String description;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Collection<Task> tasks;
@@ -20,7 +21,11 @@ public class Project {
 
     public Project(String project_name) {
         this.project_name = project_name;
+    }
 
+    public Project(String project_name, String description) {
+        this.project_name = project_name;
+        this.description = description;
     }
 
     public Collection<Task> getTasks() {
@@ -29,6 +34,14 @@ public class Project {
 
     public void setTasks(Collection<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getId() {

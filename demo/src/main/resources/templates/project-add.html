@@ -8,10 +8,18 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
-    <h1>Add a new Project and Task</h1>
-    <form th:action="@{/project/add}" method="post">
-        <input type="text" name="project_name" placeholder="Project" class="form-control"><br>
-        <textarea name="description" placeholder="Input description of project" class="form-control"></textarea><br>
+    <h1>Add a new Project</h1>
+    <form th:action="@{/project/add}" class="needs-validation" method="post">
+        <label for="validationCustom01">Project name</label>
+        <input type="text" name="project_name" id="validationCustom01"  value="" required  class="form-control"><br>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <label for="validationCustom02">Description</label>
+        <textarea name="description" id="validationCustom02"  value="" required class="form-control"></textarea><br>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
 
 
 
