@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Collections;
 import java.util.Map;
 
+/**
+ * Класс RegistrationController назначен для логики отображений страниц
+ * для регистрации/авторизации новых пользователей
+ */
+
 @Controller
 public class RegistrationController {
     @Autowired
@@ -28,7 +33,6 @@ public class RegistrationController {
             model.put("message", "User exists!");
             return "registration";
         }
-
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);

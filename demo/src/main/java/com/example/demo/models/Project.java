@@ -2,7 +2,16 @@ package com.example.demo.models;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
+
+/**
+ * Класс-сущность Project назначен для проектов и их параметров.
+ * @Entity устанавливает связь с JPA Repository
+ * @Table(name = "project") определяет имя таблицы в БД.
+ * @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL) устанавливает связь
+ * между сущностями с использованием "ленивой" загрузки связанных обьектов из БД, а так же устанавливает
+ * каскадную связь между сущностями(если данный обьект будет удален и т.д. связанный с ним обьект тоже потерпит изменение)
+ *
+ */
 
 @Entity
 @Table(name = "project")

@@ -1,7 +1,14 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
-import java.util.Collection;
+
+/**
+ * Класс-сущность Project назначен для проектов и их параметров.
+ * @Entity устанавливает связь с JPA Repository
+ * @ManyToOne(fetch = FetchType.LAZY ) устанавливает связь с классом-сущностью Project
+ * @OneToOne(fetch = FetchType.EAGER) устанавливает связь с классом-сущностью User
+ * @JoinColumn(name = "user_id") именует переменную с которой устанавливается связь в таблице БД.
+ */
 
 @Entity
 public class Task {
@@ -43,8 +50,6 @@ public class Task {
         this.description = description;
     }
 
-
-
     public String getType() {
         return type;
     }
@@ -61,9 +66,6 @@ public class Task {
         this.priority = priority;
     }
 
-
-
-
     public User getAuthor() {
         return author;
     }
@@ -74,7 +76,6 @@ public class Task {
 
     public Task() {
     }
-
 
     public Task(String title, String description, String type, int priority, Project project, User author) {
         this.title = title;

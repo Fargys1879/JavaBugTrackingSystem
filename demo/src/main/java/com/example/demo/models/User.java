@@ -5,8 +5,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
+
+/**
+ * Класс-сущность User назначен для пользователей.
+ * @Entity устанавливает связь с JPA Repository
+ * @Table(name = "users") определяет имя таблицы в БД.
+ * @ElementCollection означает, что коллекция не является совокупностью объектов,
+ * а представляет собой набор простых типов (строки и т.д.) или набор встраиваемых элементов
+ * (класс, аннотированный с помощью @Enumerated).
+ * @OneToOne(fetch = FetchType.EAGER) устанавливает связь с классом-сущностью User
+ * @JoinColumn(name = "user_id") именует переменную с которой устанавливается связь в таблице БД.
+ */
 
 @Entity
 @Table(name = "users")

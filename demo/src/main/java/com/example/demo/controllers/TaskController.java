@@ -10,10 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+
+/**
+ * Класс TaskController назначен для отображения страниц с задачами.
+ * @RequestParam привязывает значение имени параметра строки запроса к параметру имени
+ * метода отображения(ответа).
+ * @AuthenticationPrincipal берет значение User авторизованного пользователя для передачи его параметров.
+ */
 
 @Controller
 public class TaskController {

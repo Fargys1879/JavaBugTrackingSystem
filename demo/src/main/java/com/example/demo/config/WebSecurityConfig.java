@@ -10,7 +10,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 
-
+/**
+ * Класс WebSecurityConfig назначен для защиты доступа к страницам приложения
+ * @EnableWebSecurity, чтобы включить поддержку веб-безопасности Spring Security
+ * и обеспечить интеграцию Spring MVC. Он также расширяет WebSecurityConfigurerAdapter
+ * и переопределяет несколько его методов, чтобы установить некоторые особенности конфигурации веб-безопасности.
+ *
+ */
 
 @Configuration
 @EnableWebSecurity

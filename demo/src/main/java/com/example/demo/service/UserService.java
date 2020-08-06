@@ -7,6 +7,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/**
+ * Класс  UserService наследуемый от UserDetailsService.
+ * Интерфейс UserDetailsService  который загружает пользовательские данные.
+ * @Override
+ * public UserDetails loadUserByUsername(String username) переопределение данного метода
+ * для поска User по username в репозитории.
+ */
+
 @Service
 public class UserService implements UserDetailsService {
     @Autowired

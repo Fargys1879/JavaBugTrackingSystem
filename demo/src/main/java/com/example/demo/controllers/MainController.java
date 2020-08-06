@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Project;
-import com.example.demo.models.Task;
 import com.example.demo.models.User;
 import com.example.demo.repo.ProjectRepository;
 import com.example.demo.repo.TaskRepository;
@@ -15,8 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
+
+/**
+ * Класс MainController назначен для отображения главной страницы и страниц с проектами
+ * @RequestParam привязывает значение имени параметра строки запроса к параметру имени
+ * метода отображения(ответа).
+ */
 
 @Controller
 public class MainController {
@@ -65,7 +69,6 @@ public class MainController {
         ArrayList<Project> res = new ArrayList<>();
         proj.ifPresent(res::add);
         model.addAttribute("project", res);
-
 
         return "project-details";
 

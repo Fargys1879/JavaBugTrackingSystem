@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Role;
-import com.example.demo.models.Task;
 import com.example.demo.models.User;
 import com.example.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+/**
+ * Класс UserController назначен для логики манипуляции параметров пользователей.
+ */
 
 @Controller
 public class UserController {
@@ -45,10 +48,12 @@ public class UserController {
                            @PathVariable(value = "id") User user,Model model) {
         user.setUsername(userName);
         user.setPassword(userPassword);
+        ////Get Set roles from Role Enum for get User role/////
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role :: name)
                 .collect(Collectors.toSet());
         user.getRoles().clear();
+        ////////Put new Role for User/////////////////////////
         for (String key : roles) {
             if (key.contains(role)) {
                 user.getRoles().add(Role.valueOf(key));
