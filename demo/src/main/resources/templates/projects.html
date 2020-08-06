@@ -9,11 +9,24 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5">
     <h1>Projects</h1>
-    <div th:each="el : ${project}" class="alert alert-info mt-2">
-        <h3 th:text="${el.project_name}"/>
-        <a th:href="'/project/' + ${el.id}">Details</a>
-
-    </div>
+    <table class="table" align="center">
+        <thead class="thead-dark" align="center">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Project</th>
+            <th scope="col">Description</th>
+            <th scope="col">Details</th>
+        </tr>
+        </thead>
+        <tbody align="center">
+        <tr th:each="el : ${projects}">
+            <td th:text="${el.id}"/>
+            <td th:text="${el.project_name}"/>
+            <td th:text="${el.description}"/>
+            <td><a th:href="'/project/' + ${el.id}" class="btn btn-warning">Details</a><br><br></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>

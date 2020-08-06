@@ -10,12 +10,23 @@
 <div class="container mt-5">
     <h1>Project Details</h1>
     <div th:each="el : ${project}" class="alert alert-info mt-2">
-        <h3 th:text="${el.project_name}"/>
+    <form th:action="'/project/' + ${el.id} + '/edit'" method="post">
 
-
+            <label for="validationCustom01">Project name</label>
+            <input type="text" name="project_name" id="validationCustom01" th:value="${el.project_name}" required  class="form-control"><br>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <label for="validationCustom02">Description</label>
+            <textarea th:text="${el.description}" name="description" id="validationCustom02" th:value="${el.description}" required class="form-control"></textarea><br>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+                <button type="submit" class="btn btn-warning">Save</button>
+    </form><br>
         <form th:action="'/project/' + ${el.id} + '/remove'" method="post">
             <button type="submit" class="btn btn-warning">Delete</button>
-        </form>
+        </form><br>
     </div>
 </div>
 <div th:insert="blocks/footer :: footer"></div>

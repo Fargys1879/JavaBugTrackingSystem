@@ -33,8 +33,8 @@ public class MainController {
 
     @GetMapping("/projects")
     public String projectMain(Model model) {
-        Iterable<Project> project = projectRepository.findAll();
-        model.addAttribute("project", project);
+        Iterable<Project> projects = projectRepository.findAll();
+        model.addAttribute("projects", projects);
         return "projects";
 
     }
@@ -68,6 +68,20 @@ public class MainController {
 
 
         return "project-details";
+
+    }
+
+    @PostMapping("/project/{id}/edit")
+    public String projectPOSTUpdate(
+            @PathVariable(value = "id") Long id,
+            @RequestParam String project_name,
+            @RequestParam String description,
+            Model model) {
+        Project project = projectRepository.findById(id).orElseThrow();
+        project.setProject_name(project_name);
+        project.setDescription(description);
+        projectRepository.save(project);
+        return  "redirect:/projects";
 
     }
 

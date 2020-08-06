@@ -119,7 +119,6 @@ public class TaskController {
                                  @RequestParam String title,
                                  @RequestParam String type,
                                  @RequestParam String description,
-                                 //@RequestParam boolean progress,
                                  Model model) {
         Task task = taskRepository.findById(id).orElseThrow();
         task.setTitle(title);
