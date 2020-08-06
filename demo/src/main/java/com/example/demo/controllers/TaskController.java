@@ -68,8 +68,10 @@ public class TaskController {
                                 @RequestParam String type,
                                 @RequestParam int priority,
                                 @RequestParam String projectString,
+                                @RequestParam String userString,
                                 @AuthenticationPrincipal User author,
                             Model model) {
+        ////////////Get project by input projectString for put our project----> in new Task/////
         Project project = new Project();
         for (Map.Entry<Long,String> pair : projectsMap.entrySet()) {
             Long id = pair.getKey();
@@ -82,6 +84,18 @@ public class TaskController {
                 }
             }
         }
+        ////////////Get project by input projectString for put our project----> in new Task/////
+        ////////////Get user by input userString for put our user----> in new Task/////
+        List<User> users = userRepository.findAll();
+        Iterator<User> userIterator = users.iterator();
+        while (userIterator.hasNext()) {
+            User user = userIterator.next();
+            String username = user.getUsername();
+            if (username.equals(userString)) {
+                author = user;
+            }
+        }
+        ////////////Get user by input userString for put our user----> in new Task/////
         Task task = new Task(title, description, type, priority, project, author);
         taskRepository.save(task);
         return  "redirect:/task";
