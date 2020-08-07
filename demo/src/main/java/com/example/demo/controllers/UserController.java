@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
-    @Autowired
+    @Autowired // This means to get the bean called userRepository
     private UserRepository userRepo;
 
     @GetMapping("/user")

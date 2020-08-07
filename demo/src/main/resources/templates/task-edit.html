@@ -9,7 +9,7 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <h1>Task Edit</h1>
-    <div th:each="el : ${task}">
+    <div th:each="el : ${task}" class="alert alert-info mt-2">
     <form th:action="'/task/' + ${el.id} + '/edit'"  method="post">
 
             <input type="text" th:value="${el.title}" name="title" placeholder="${el.title}" class="form-control"><br>

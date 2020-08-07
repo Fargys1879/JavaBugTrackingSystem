@@ -8,25 +8,36 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <main role="main">
-<div th:each="el : ${user}">
-    <form th:action="'/user/' + ${el.id} + '/edit'" method="post">
-        <input type="text" readonly class="form-control-plaintext" id="userID" th:value="'userID ' + ${el.id}"><br>
-        <input type="text" th:value="${el.username}" id="userName" name="userName" placeholder="${el.username}" class="form-control"><br>
-        <input type="text" th:value="${el.password}" id="userPassword" name="userPassword" placeholder="${el.password}" class="form-control"><br>
-        <select class="form-control" id="role" name="role" >
-            <option th:each="el : ${roles}"
-                    th:value="${el}"
-                    th:text="${el}">Wireframe</option>
-        </select>
+    <div class="container mt-5">
+    <div th:each="el : ${user}" class="alert alert-info mt-2">
+        <form th:action="'/user/' + ${el.id} + '/edit'" class="needs-validation" method="post">
+            <input type="text" readonly class="form-control-plaintext" id="UserID" th:value="'userID ' + ${el.id}"><br>
+            <label for="validationCustom01">Username</label>
+            <input type="text" th:value="${el.username}" required id="validationCustom01" name="userName"  class="form-control"><br>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <label for="validationCustom02">Password</label>
+            <input type="text" th:value="${el.password}" required id="validationCustom02" name="userPassword"  class="form-control"><br>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <label >Role</label>
+            <select class="form-control" id="role" name="role" >
+                <option th:each="el : ${roles}"
+                        th:value="${el}" required
+                        th:text="${el}">Wireframe</option>
+            </select><br>
 
-    <button type="submit" class="btn btn-warning">Save</button><br>
-    </form><br>
-    <span></span>
-    <form th:action="'/user/' + ${el.id} + '/delete'" method="post">
-        <button type="submit" class="btn btn-warning">Delete User</button><br><br>
-    </form><br>
-    <a href="/">Back to Home</a>
-</div>
+        <button type="submit" class="btn btn-warning">Save</button><br>
+        </form><br>
+        <span></span>
+        <form th:action="'/user/' + ${el.id} + '/delete'" method="post">
+            <button type="submit" class="btn btn-warning">Delete User</button><br><br>
+        </form><br>
+        <a href="/">Back to Home</a>
+    </div>
+    </div>
 </main>
 <div th:insert="blocks/footer :: footer"></div>
 </body>

@@ -26,7 +26,7 @@ import java.util.Optional;
 
 @Controller
 public class MainController {
-    @Autowired
+    @Autowired // This means to get the bean called Repository
     private ProjectRepository projectRepository;
     @Autowired
     private TaskRepository taskRepository;

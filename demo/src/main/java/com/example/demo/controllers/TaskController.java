@@ -25,7 +25,7 @@ import java.util.*;
 
 @Controller
 public class TaskController {
-    @Autowired
+    @Autowired // This means to get the bean called Repository
     private TaskRepository taskRepository;
     @Autowired
     private ProjectRepository projectRepository;
@@ -48,6 +48,11 @@ public class TaskController {
         //////////////Set projectString for Project Choice form//////////
         Iterable<Project> projects = projectRepository.findAll();
         Iterator<Project> projectIterator = projects.iterator();
+        /////////////Checking for existing Projects/////////////////////
+        if (!projectIterator.hasNext()) {
+            return  "redirect:/project/add"; //"/project/add"
+        }
+        /////////////Checking for existing Projects/////////////////////
         while (projectIterator.hasNext()) {
             Project project = projectIterator.next();
             String name = project.getProject_name();

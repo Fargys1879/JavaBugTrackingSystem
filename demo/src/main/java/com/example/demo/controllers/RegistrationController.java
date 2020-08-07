@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
-    @Autowired
+    @Autowired // This means to get the bean called Repository
     private UserRepository userRepo;
 
     @GetMapping("/registration")

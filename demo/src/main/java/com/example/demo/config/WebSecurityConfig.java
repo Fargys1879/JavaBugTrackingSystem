@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers( "/registration").permitAll()
+                    .antMatchers("/", "/registration", "/h2-console/*").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -38,6 +38,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout()
                     .permitAll();
+
+
+        //ВНИМАНИЕ! Это не конфигурация безопасности Spring, которую вы хотели бы использовать
+        // для рабочего веб-сайта. Эти настройки предназначены только для поддержки разработки
+        // веб-приложения Spring Boot и обеспечения доступа к консоли базы данных H2
+        /////////////////////////////////////////////////////////////////////////////////////
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+        ////////////////////////////////////////////////////////////////////////////////////
+
     }
 
     @Override
