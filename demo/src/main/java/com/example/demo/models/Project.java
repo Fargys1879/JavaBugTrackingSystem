@@ -69,5 +69,8 @@ public class Project {
         this.project_name = project_name;
     }
 
-
+    @Override
+    public String toString() {
+        return project_name;
+    }
 }
